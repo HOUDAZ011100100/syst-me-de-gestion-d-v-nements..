@@ -22,7 +22,7 @@ RUN apk update && apk upgrade && \
     && printf "no\nno\nno\nno\nauto\nauto\nauto\nno\nauto\nno\nbundled\n" | pecl install mongodb-${MONGODB_EXT_VERSION} \
     && printf "\n\n\n\n\n\n\n\n" | pecl install redis-${REDIS_EXT_VERSION} \
     && docker-php-ext-enable mongodb redis \
-    && rm -rf /tmp/pear ~/.pearrc
+    && rm -rf /tmp/pear ~/.pearrc /var/cache/apk/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
